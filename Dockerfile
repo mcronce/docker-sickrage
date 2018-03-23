@@ -16,7 +16,7 @@ RUN \
 RUN \
 	apk add --no-cache git && \
 	git clone --depth 1 https://github.com/SickRage/SickRage.git /sickrage && \
-	rm -Rvf /sickrage/.git && \
+	rm -Rvf /sickrage/.[a-z]* /sickrage/tests && \
 	apk del --no-cache git
 
 ADD ./start.sh /start.sh

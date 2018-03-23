@@ -5,7 +5,7 @@ ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm'
 
-RUN apk add --no-cache --virtual .deps ca-certificates py2-pip python py-libxml2 py-lxml unrar tzdata
+RUN apk add --no-cache --virtual .deps ca-certificates py2-pip python py-libxml2 py-lxml unrar tzdata openssl libffi
 
 RUN \
     apk add --no-cache \

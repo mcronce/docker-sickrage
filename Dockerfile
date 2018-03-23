@@ -5,11 +5,11 @@ ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm'
 
+RUN apk add --no-cache --virtual .deps ca-certificates py2-pip python py-libxml2 py-lxml unrar tzdata
+
 RUN \
     apk add --no-cache \
-        ca-certificates \
-        py2-pip ca-certificates git python py-libxml2 py-lxml \
-        make gcc g++ python-dev openssl-dev libffi-dev unrar tzdata \
+        git make gcc g++ python-dev openssl-dev libffi-dev \
         && \
     pip --no-cache-dir install --upgrade setuptools && \
     pip --no-cache-dir install --upgrade pyopenssl cheetah requirements && \

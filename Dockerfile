@@ -11,13 +11,13 @@ RUN \
     apk add --no-cache --virtual .build-deps make gcc g++ python-dev openssl-dev libffi-dev && \
     pip --no-cache-dir install --upgrade setuptools && \
     pip --no-cache-dir install --upgrade pyopenssl cheetah requirements && \
-    apk del .build-deps
+    apk del --no-cache .build-deps
 
 RUN \
 	apk add --no-cache git && \
 	git clone --depth 1 https://github.com/SickRage/SickRage.git /sickrage && \
 	rm -Rvf /sickrage/.git && \
-	apk del git
+	apk del --no-cache git
 
 ADD ./start.sh /start.sh
 RUN chmod u+x  /start.sh

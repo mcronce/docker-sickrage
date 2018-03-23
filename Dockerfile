@@ -8,13 +8,11 @@ ENV LANG='en_US.UTF-8' \
 RUN apk add --no-cache --virtual .deps ca-certificates py2-pip python py-libxml2 py-lxml unrar tzdata openssl libffi
 
 RUN \
-    apk add --no-cache \
-        git make gcc g++ python-dev openssl-dev libffi-dev \
-        && \
+    apk add --no-cache --virtual .build-deps git make gcc g++ python-dev openssl-dev libffi-dev && \
     pip --no-cache-dir install --upgrade setuptools && \
     pip --no-cache-dir install --upgrade pyopenssl cheetah requirements && \
     git clone --depth 1 https://github.com/SickRage/SickRage.git /sickrage && \
-    apk del make gcc g++ python-dev
+    apk del .build-deps
 
 ADD ./start.sh /start.sh
 RUN chmod u+x  /start.sh
